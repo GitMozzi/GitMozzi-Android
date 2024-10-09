@@ -5,16 +5,19 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.sub.commit.ui.login.LoginDestination
 import com.sub.commit.extensions.customComposable
+import com.sub.commit.ui.login.LoginDestination
+import com.sub.commit.ui.login.LoginViewModel
 import com.sub.commit.ui.theme.CommitTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 // https://android-uni.tistory.com/36
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    val loginViewModel by viewModels<LoginViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
