@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "commit"
 include(":app")
- 
+include(":data")
+include(":domain")

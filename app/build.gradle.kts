@@ -29,6 +29,17 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            buildConfigField("String", "GITHUB_CLIENT_ID", properties["GITHUB_CLIENT_ID"].toString())
+            buildConfigField("String", "GITHUB_CLIENT_SECRET", properties["GITHUB_CLIENT_SECRET"].toString())
+        }
+
+        debug {
+            isMinifyEnabled = true
+            isDebuggable = false
+
+            buildConfigField("String", "GITHUB_CLIENT_ID", properties["GITHUB_CLIENT_ID"].toString())
+            buildConfigField("String", "GITHUB_CLIENT_SECRET", properties["GITHUB_CLIENT_SECRET"].toString())
         }
     }
     compileOptions {
@@ -40,6 +51,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -52,6 +64,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
@@ -62,6 +75,7 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
+    implementation(libs.androidx.lifecycle.runtime.compose.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -16,7 +16,8 @@
         android:theme="@style/Theme.Commit"
         tools:targetApi="31">
         <activity
-            android:name="com.sub.commit.MainActivity"
+            android:name="com.sub.commit.ui.main.MainActivity"
+            android:launchMode="singleTask"
             android:exported="true"
             android:theme="@style/Theme.Commit">
             <intent-filter>
@@ -24,6 +25,18 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="github-auth"
+                    android:scheme="commit"/>
+            </intent-filter>
+
         </activity>
     </application>
 
